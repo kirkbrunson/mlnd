@@ -204,7 +204,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -222,7 +222,8 @@ div#notebook {
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;housing.csv&#39;</span><span class="p">)</span>
 <span class="n">prices</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    
+
+
 <span class="c1"># Success</span>
 <span class="k">print</span> <span class="s2">&quot;Boston housing dataset has {} data points with {} variables each.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -276,14 +277,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -310,7 +311,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -345,7 +346,7 @@ Standard deviation of prices: $165,340.28
 <ul>
 <li><strong>RM increase -&gt; MEDV increase:</strong> Room count correlates with sq ft. This has a direct correlation with price. </li>
 <li><strong>LSTAT increase -&gt; MEDV decrease:</strong> Less buy side pressure. Stated alternatively, inverse gentrification.</li>
-<li><strong>PTRATIO increase -&gt; MEDV increase:</strong> School districts are a decision factor for families school age children. Also, educational opportunity directly correlates with socioeconomic status.</li>
+<li><strong>PTRATIO decrease -&gt; MEDV increase:</strong> The number of teachers available per student is related to the (usually property) tax revenue from the area, so the two are inversely correlated. In general, more well off areas tend to have better educational resources and opportunities.</li>
 </ul>
 
 </div>
@@ -380,7 +381,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
@@ -439,7 +440,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate the performance of this model</span>
@@ -498,7 +499,7 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
@@ -507,7 +508,7 @@ Standard deviation of prices: $165,340.28
     <span class="c1"># support sklearn &lt; v0.18</span>
     <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">prices</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">results</span>
 
 <span class="k">print</span> <span class="s2">&quot;Training and testing split was successful.&quot;</span>
@@ -550,6 +551,7 @@ Standard deviation of prices: $165,340.28
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>Splitting our data into train, test, and validation sets is an important preprocessing step for ML algorithms. Doing this allows us to quantify our algorithm's performance, locate points for early stopping (to prevent overfitting), and perform model validation with techniques like CV.</p>
+<p>In general, we build our model with the training data, use the validation set to select hyperparams (eg to prevent overfitting), and then use the test set to calculate the accuracy of our trained model.</p>
 
 </div>
 </div>
@@ -2185,7 +2187,8 @@ GNOiWPAZY4xpUSz4jDHGtCgWfMYYY1qU/w/NwH/c+t5/0AAAAABJRU5ErkJggg==
 <li>Depth 1: High bias, low variance</li>
 <li>Depth 10: Low bias, high variance</li>
 </ul>
-<p>A visual cue is the divergence of the training and validation curves</p>
+<p>A visual cue is the divergence of the training and validation score curves.</p>
+<p>Looking at the validation curve after a depth of 4, the accuracy drops as the model has overfit. This shows high variance. In the training curve, we see the impact that the number of features used to split has on bias. When the number of features is low, the tree is biased towards the features that it has split on.</p>
 
 </div>
 </div>
@@ -2238,7 +2241,18 @@ GNOiWPAZY4xpUSz4jDHGtCgWfMYYY1qU/w/NwH/c+t5/0AAAAABJRU5ErkJggg==
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Grid search is technique used for hyperparameter optimization. Put simply it is a parallel brute force seach for the parameters to our learners that yield the best performance in our model.</p>
+<p>Grid search is param sweep technique used for hyperparameter optimization. Put simply it is a parallel brute force seach for through the parameters for our learners that yield the best performance in our model. Unlike gradient or random search methods, we manually supply the params (usually through param_grid) and GS searches these for the best performing model.</p>
+<p>Upside:</p>
+<ul>
+<li>Easy to implement and parallelize</li>
+<li>Works well in low D spaces</li>
+</ul>
+<p>Downsides:</p>
+<ul>
+<li>No gradient to follow, so we can't direct our search</li>
+<li>Not sensitive to the amount of impact a param contributes. Must search all</li>
+<li>Curse of dimensionality</li>
+</ul>
 
 </div>
 </div>
@@ -2261,7 +2275,7 @@ GNOiWPAZY4xpUSz4jDHGtCgWfMYYY1qU/w/NwH/c+t5/0AAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>kFold CV is a model validation technique that seeks to reduce the train/test accuracy tradeoff between a simple split of the data into training and test sets. This method splits a dataset into k subsets using k-1 for training, and takes the mean accuracy of k runs. Depending on your data, variations such as LOOCV or roll forward CV may be beneficial.</p>
-<p>Gridsearch selects the best hyperparameters for our models, so validating the performance of a model given a set of hyperparams is important. k-Fold CV allows us to do a better job of validation as all the data is used for both training and testing.</p>
+<p>Gridsearch selects the best hyperparameters for our models, so validating the performance of a model given a set of hyperparams is important. k-Fold CV allows us to do a better job of validation and generalization as all the data is used for both training and testing.</p>
 
 </div>
 </div>
@@ -2298,7 +2312,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># from sklearn.model_selection import cross_val_score</span>
@@ -2323,7 +2337,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
     <span class="n">cv_sets</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 
     <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]}</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)}</span>
     <span class="n">scoring_fnc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">performance_metric</span><span class="p">)</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">GridSearchCV</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring_fnc</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv_sets</span><span class="p">)</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -2360,7 +2374,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Fit the training data to the model using grid search</span>
@@ -2443,7 +2457,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a matrix for client data</span>
@@ -2454,6 +2468,8 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 <span class="c1"># Show predictions</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">price</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">client_data</span><span class="p">)):</span>
     <span class="k">print</span> <span class="s2">&quot;Predicted selling price for Client {}&#39;s home: ${:,.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">price</span><span class="p">)</span>
+    
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2469,6 +2485,16 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 <pre>Predicted selling price for Client 1&apos;s home: $411,931.58
 Predicted selling price for Client 2&apos;s home: $235,620.00
 Predicted selling price for Client 3&apos;s home: $922,740.00
+
+               RM       LSTAT     PTRATIO          MEDV
+count  489.000000  489.000000  489.000000  4.890000e+02
+mean     6.240288   12.939632   18.516564  4.543429e+05
+std      0.643650    7.081990    2.111268  1.653403e+05
+min      3.561000    1.980000   12.600000  1.050000e+05
+25%      5.880000    7.370000   17.400000  3.507000e+05
+50%      6.185000   11.690000   19.100000  4.389000e+05
+75%      6.575000   17.120000   20.200000  5.187000e+05
+max      8.398000   37.970000   22.000000  1.024800e+06
 </pre>
 </div>
 </div>
@@ -2492,7 +2518,13 @@ Predicted selling price for Client 3&apos;s home: $922,740.00
 <li><p>$922,740.00</p>
 </li>
 </ul>
-<p>Yes, these prices seem reasonable. The median house price is $438k and StDev is $165k. Client 1 has a typical house and client 2 has a house just over 1 std from the market mean ($454k). Client 3 is quite well off at ~3 std from the mean, but they have a large house, in a great neighborhood.</p>
+<p>These predictions agree with the discussion in question 1. The respective features show this:</p>
+<ul>
+<li>Client 1: price is slightly below both central tendencies. RM and PTRATIO are ~1 SD below respective means and LSTAT is ~1 SD above</li>
+<li>Client 2: price is significantly below both central tendencies. RM is ~2 SD below the mean, LSTAT is ~1 SD above</li>
+<li>Client 3: price is significantly above both central tendencies. RM is ~2.75 SD above the mean, LSTAT is ~1.5 SD below, and PTRATIO is ~3 SD below.</li>
+</ul>
+<p>In conclusion: Yes, these prices seem reasonable. The median house price is 438k and StDev is 165k. Client 1 has a typical house and client 2 has a house just over 1 std from the market mean ($454k). Client 3 is quite well off at ~3 std from the mean, but they have a large house, in a great neighborhood.</p>
 <p>If I were advising the clients on an offer price, I would recommend predicted price + Y% to guard profits from closing costs and counter offers.</p>
 
 </div>
