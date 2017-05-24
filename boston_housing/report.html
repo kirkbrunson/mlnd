@@ -552,6 +552,7 @@ Standard deviation of prices: $165,171.13
 <p><strong>Answer: </strong></p>
 <p>Splitting our data into train, test, and validation sets is an important preprocessing step for ML algorithms. Doing this allows us to quantify our algorithm's performance, locate points for early stopping (to prevent overfitting), and perform model validation with techniques like CV.</p>
 <p>In general, we build our model with the training data, use the validation set to select hyperparams (eg to prevent overfitting), and then use the test set to calculate the accuracy of our trained model.</p>
+<p>However given the size of our dataset, for this project we will only be using training and testing data sets.</p>
 
 </div>
 </div>
@@ -2187,8 +2188,8 @@ GNOiWPAZY4xpUSz4jDHGtCgWfMYYY1qU/w/NwH/c+t5/0AAAAABJRU5ErkJggg==
 <li>Depth 1: High bias, low variance</li>
 <li>Depth 10: Low bias, high variance</li>
 </ul>
-<p>A visual cue is the divergence of the training and validation score curves.</p>
-<p>Looking at the validation curve after a depth of 4, the accuracy drops as the model has overfit. This shows high variance. In the training curve, we see the impact that the number of features used to split has on bias. When the number of features is low, the tree is biased towards the features that it has split on.</p>
+<p>A visual cue of variance is the divergence of the training and validation score curves. To see bias, we can look at the training curve. When the number of features is low, the tree is biased towards the feature(s) that it has split on and the score is low (~0.35). As we add more features to split on (we increase our tree depth), we see bias is reduced and the training score increases.</p>
+<p>The optimal model complexity is where the total error, bias and variance, is at a minimum. Looking at the validation curve after a depth of 4, the accuracy drops and the model has overfit.</p>
 
 </div>
 </div>
